@@ -4,6 +4,8 @@
 #include "sys.h"
 
 void Encoder_Init(void);
-int16_t Encoder_Get(void);
-
+void Encoder_Init_TIM2(void);
+int Read_Encoder(u8 TIMX);
+void TIM4_IRQHandler(void);
+void TIM2_IRQHandler(void);
 #endif

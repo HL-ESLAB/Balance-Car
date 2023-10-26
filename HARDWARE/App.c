@@ -15,7 +15,7 @@
 **********************************************************/
 
 /***全局变量***/
-SensorDataTypeDef  Sensor, *pSensor;
+//MPU6500_STRUCT  *pSensor;
 
 
 //任务函数
@@ -56,18 +56,8 @@ void IMU_Task(void *pvParameters)
 	while(1)
 	{
 		PreviousWakeTime = xTaskGetTickCount();
-		Read_MPU9250_Data(&pSensor->AccX, &pSensor->AccY, &pSensor->AccZ, &pSensor->GyroX, &pSensor->GyroY, &pSensor->GyroZ);
-		printf("AccX = %d\r\n",Sensor.AccX);
-		delay_ms(10);
-		printf("AccY = %d\r\n",Sensor.AccY);
-		delay_ms(10);
-		printf("AccZ = %d\r\n",Sensor.AccZ);
-		delay_ms(10);
-		printf("GyroX = %d\r\n",Sensor.GyroX);
-		delay_ms(10);
-		printf("GyroY = %d\r\n",Sensor.GyroY);
-		delay_ms(10);
-		printf("GyroZ = %d\r\n",Sensor.GyroZ);
+		
+
 		delay_ms(10);
 		
 		vTaskDelayUntil(&PreviousWakeTime, configTICK_RATE_HZ/10);

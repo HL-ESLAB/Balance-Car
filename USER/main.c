@@ -18,7 +18,14 @@
 此项宏定义
 #define configTOTAL_HEAP_SIZE								((size_t)(10*1024))     //系统所有总的堆大小
 ************************************************/
-
+u8 Way_Angle=1;                             //获取角度的算法，1：四元数  2：卡尔曼  3：互补滤波 
+u8 Flag_Qian,Flag_Hou,Flag_Left,Flag_Right,Flag_sudu=2; //蓝牙遥控相关的变量
+u8 Flag_Stop=1,Flag_Show=0,Flag_Hover=0;    //停止标志位和 显示标志位 默认停止 显示打开
+int Encoder_Left,Encoder_Right;             //左右编码器的脉冲计数
+int Moto1,Moto2;                            //电机PWM变量 应是Motor的 向Moto致敬	
+float Angle_Balance,Gyro_Balance,Gyro_Turn; //平衡倾角 平衡陀螺仪 转向陀螺仪
+float Balance_Kp=300,Balance_Kd=1,Velocity_Kp=80,Velocity_Ki=0.4;//PID参数
+float Zhongzhi;
 RCC_ClocksTypeDef RCC_CLK;/*  时钟结构体定义  */
 int main(void)
 {
@@ -39,7 +46,7 @@ int main(void)
 	Encoder_Init();						//编码器初始化
 	Motor_Init();							//电机控制初始化
 	PWM_Init();								//PWM输出初始化
-	Init_MPU9250();						//MPU初始化
+							//MPU初始化
 			
 	
 	Application_Init();
